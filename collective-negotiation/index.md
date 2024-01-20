@@ -1,12 +1,12 @@
 ---
-title: 親への
+title: 交渉
 ---
 # 目次
 |日付|タイトル|リンク|
 |-|-|-
-|2024.01.20　20:01|親へのクリスマスプレゼントの交渉|[link](https://private-docs-sora81dev.netlify.app/Collective-Negotiation/index.html#20240120%E3%80%80親へのクリスマスプレゼントの交渉)
+|2024.01.20　20:01|親へのクリスマスプレゼントの交渉|[link](https://private-docs-sora81dev.netlify.app/Collective-Negotiation/index.html#20240120「親へのクリスマスプレゼントの交渉」)
 
-# 20240120　親へのクリスマスプレゼント交渉
+# 20240120「親へのクリスマスプレゼント交渉」
 | | |
 |-|-|
 |記事id|#100001
@@ -96,15 +96,31 @@ updated on 2023.01.20 21:00
 ---
 ---
 ## Footer
+`Lastest Version`
+|Items|Version|Update Date|
+|-|-|-|
+|System|1.0.2|2023.01.20 21:00
+|目次|1.0.1|2023.01.21 00:11
+|#100001|1.0.1|2023.01.20 21:00
+|フッター|1.1.0|2023.01.21 00:11
+|ライセンス|1.0.0|2023.01.20 20:15
+
 `Update info`   
-|更新日時|更新内容|
-|-|-|
-|2023.01.20 20:15|Create this document
-|〃|#100001 (1.0.0)　作成
-|2023.01.20 21:00|Systems　　　　URLを"https://docs-sora81dev.netlify.app"から"https://private-docs-sora81dev.netlify.app"に変更
-|〃|#100001 (1.0.1)　成功としてマーク|
-|〃|Systems　　　　タイトルを"index.html"から"交渉系｜Sora Docs(Private)"に変更
+|更新日時|更新場所|バージョン|更新内容|
+|-|-|-|-|
+|2023.01.20 20:15|System|1.0.0|この文書を作成
+|〃|目次|1.0.0|追加
+|〃|ライセンス|1.0.0|ライセンスを追加
+|〃|フッター|1.0.0|フッターを追加
+|〃|#100001|1.0.0|作成
+|〃|目次|1.0.1|#100001を追加
+|2023.01.20 21:00|Systems|1.0.1|URLを"https://docs-sora81dev.netlify.app"から"https://private-docs-sora81dev.netlify.app"に変更
+|〃|#100001 |1.0.1|　成功としてマーク|
+|〃|Systems　|1.0.2|タイトルを"index.html"から"交渉系｜Sora Docs(Private)"に変更
+|2023.01.21 00:11|目次|1.0.0 |#100001のURLを修正　
+|〃|フッター|1.1.0|フッターにLastest Versionを追加
 `LICENSE`
+
 ```
 LICENSE CC-BY-NC-ND 4.0
 ```
