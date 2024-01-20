@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>交渉系｜Sora Docs(Private)</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+	<style>
+		/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+		/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+		body {
+			font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+			font-size: var(--vscode-markdown-font-size, 14px);
+			padding: 0 26px;
+			line-height: var(--vscode-markdown-line-height, 22px);
+			word-wrap: break-word;
+		}
+
+		#code-csp-warning {
+			position: fixed;
+			top: 0;
+			right: 0;
+			color: white;
+			margin: 16px;
+			text-align: center;
+			font-size: 12px;
+			font-family: sans-serif;
+			background-color: #444444;
+			cursor: pointer;
+			padding: 6px;
+			box-shadow: 1px 1px 1px rgba(0, 0, 0, .25);
+		}
+
+		#code-csp-warning:hover {
+			text-decoration: none;
+			background-color: #007acc;
+			box-shadow: 2px 2px 2px rgba(0, 0, 0, .25);
+		}
+
+		body.scrollBeyondLastLine {
+			margin-bottom: calc(100vh - 22px);
+		}
+
+		body.showEditorSelection .code-line {
+			position: relative;
+		}
+
+		body.showEditorSelection .code-active-line:before,
+		body.showEditorSelection .code-line:hover:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: -12px;
+			height: 100%;
+		}
+
+		body.showEditorSelection li.code-active-line:before,
+		body.showEditorSelection li.code-line:hover:before {
+			left: -30px;
+		}
+
+		.vscode-light.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.15);
+		}
+
+		.vscode-light.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.40);
+		}
+
+		.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
+
+		.vscode-dark.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.4);
+		}
+
+		.vscode-dark.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.60);
+		}
+
+		.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 160, 0, 0.7);
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 160, 0, 1);
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		a:focus,
+		input:focus,
+		select:focus,
+		textarea:focus {
+			outline: 1px solid -webkit-focus-ring-color;
+			outline-offset: -1px;
+		}
+
+		hr {
+			border: 0;
+			height: 2px;
+			border-bottom: 2px solid;
+		}
+
+		h1 {
+			padding-bottom: 0.3em;
+			line-height: 1.2;
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+		}
+
+		h1,
+		h2,
+		h3 {
+			font-weight: normal;
+		}
+
+		table {
+			border-collapse: collapse;
+		}
+
+		table>thead>tr>th {
+			text-align: left;
+			border-bottom: 1px solid;
+		}
+
+		table>thead>tr>th,
+		table>thead>tr>td,
+		table>tbody>tr>th,
+		table>tbody>tr>td {
+			padding: 5px 10px;
+		}
+
+		table>tbody>tr+tr>td {
+			border-top: 1px solid;
+		}
+
+		blockquote {
+			margin: 0 7px 0 5px;
+			padding: 0 16px 0 10px;
+			border-left-width: 5px;
+			border-left-style: solid;
+		}
+
+		code {
+			font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+			font-size: 1em;
+			line-height: 1.357em;
+		}
+
+		body.wordWrap pre {
+			white-space: pre-wrap;
+		}
+
+		pre:not(.hljs),
+		pre.hljs code>div {
+			padding: 16px;
+			border-radius: 3px;
+			overflow: auto;
+		}
+
+		pre code {
+			color: var(--vscode-editor-foreground);
+			tab-size: 4;
+		}
+
+		/** Theming */
+
+		.vscode-light pre {
+			background-color: rgba(220, 220, 220, 0.4);
+		}
+
+		.vscode-dark pre {
+			background-color: rgba(10, 10, 10, 0.4);
+		}
+
+		.vscode-high-contrast pre {
+			background-color: rgb(0, 0, 0);
+		}
+
+		.vscode-high-contrast h1 {
+			border-color: rgb(0, 0, 0);
+		}
+
+		.vscode-light table>thead>tr>th {
+			border-color: rgba(0, 0, 0, 0.69);
+		}
+
+		.vscode-dark table>thead>tr>th {
+			border-color: rgba(255, 255, 255, 0.69);
+		}
+
+		.vscode-light h1,
+		.vscode-light hr,
+		.vscode-light table>tbody>tr+tr>td {
+			border-color: rgba(0, 0, 0, 0.18);
+		}
+
+		.vscode-dark h1,
+		.vscode-dark hr,
+		.vscode-dark table>tbody>tr+tr>td {
+			border-color: rgba(255, 255, 255, 0.18);
+		}
+	</style>
+
+	<style>
+		/* Tomorrow Theme */
+		/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+		/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+		/* Tomorrow Comment */
+		.hljs-comment,
+		.hljs-quote {
+			color: #8e908c;
+		}
+
+		/* Tomorrow Red */
+		.hljs-variable,
+		.hljs-template-variable,
+		.hljs-tag,
+		.hljs-name,
+		.hljs-selector-id,
+		.hljs-selector-class,
+		.hljs-regexp,
+		.hljs-deletion {
+			color: #c82829;
+		}
+
+		/* Tomorrow Orange */
+		.hljs-number,
+		.hljs-built_in,
+		.hljs-builtin-name,
+		.hljs-literal,
+		.hljs-type,
+		.hljs-params,
+		.hljs-meta,
+		.hljs-link {
+			color: #f5871f;
+		}
+
+		/* Tomorrow Yellow */
+		.hljs-attribute {
+			color: #eab700;
+		}
+
+		/* Tomorrow Green */
+		.hljs-string,
+		.hljs-symbol,
+		.hljs-bullet,
+		.hljs-addition {
+			color: #718c00;
+		}
+
+		/* Tomorrow Blue */
+		.hljs-title,
+		.hljs-section {
+			color: #4271ae;
+		}
+
+		/* Tomorrow Purple */
+		.hljs-keyword,
+		.hljs-selector-tag {
+			color: #8959a8;
+		}
+
+		.hljs {
+			display: block;
+			overflow-x: auto;
+			color: #4d4d4c;
+			padding: 0.5em;
+		}
+
+		.hljs-emphasis {
+			font-style: italic;
+		}
+
+		.hljs-strong {
+			font-weight: bold;
+		}
+	</style>
+
+	<style>
+		/*
+ * Markdown PDF CSS
+ */
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+			padding: 0 12px;
+		}
+
+		pre {
+			background-color: #f8f8f8;
+			border: 1px solid #cccccc;
+			border-radius: 3px;
+			overflow-x: auto;
+			white-space: pre-wrap;
+			overflow-wrap: break-word;
+		}
+
+		pre:not(.hljs) {
+			padding: 23px;
+			line-height: 19px;
+		}
+
+		blockquote {
+			background: rgba(127, 127, 127, 0.1);
+			border-color: rgba(0, 122, 204, 0.5);
+		}
+
+		.emoji {
+			height: 1.4em;
+		}
+
+		code {
+			font-size: 14px;
+			line-height: 19px;
+		}
+
+		/* for inline code */
+		:not(pre):not(.hljs)>code {
+			color: #C9AE75;
+			/* Change the old color so it seems less like an error */
+			font-size: inherit;
+		}
+
+		/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+		.page {
+			page-break-after: always;
+		}
+	</style>
+
+	<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+
+<body>
+	<script>
+		mermaid.initialize({
+			startOnLoad: true,
+			theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+				? 'dark'
+				: 'default'
+		});
+	</script>
+	<h1 id="%E7%9B%AE%E6%AC%A1">目次</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>日付</th>
+				<th>タイトル</th>
+				<th>リンク</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>2024.01.20　20:01</td>
+				<td>親へのクリスマスプレゼントの交渉</td>
+				<td><a
+						href="https://private-docs-sora81dev.netlify.app/Collective-Negotiation/index.html#20240120%E3%80%80%E8%A6%AA%E3%81%B8%E3%81%AE%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9%E3%83%97%E3%83%AC%E3%82%BC%E3%83%B3%E3%83%88%E3%81%AE%E4%BA%A4%E6%B8%89">link</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<h1
+		id="20240120-%E8%A6%AA%E3%81%B8%E3%81%AE%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%9E%E3%82%B9%E3%83%97%E3%83%AC%E3%82%BC%E3%83%B3%E3%83%88%E4%BA%A4%E6%B8%89">
+		20240120　親へのクリスマスプレゼント交渉</h1>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>記事id</td>
+				<td>#100001</td>
+			</tr>
+			<tr>
+				<td>記事バージョン</td>
+				<td>1.0.1</td>
+			</tr>
+			<tr>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>交渉日時</td>
+				<td>2024.01.20 20:01</td>
+			</tr>
+			<tr>
+				<td>情報最終更新日時</td>
+				<td>2024.01.20 21:00</td>
+			</tr>
+			<tr>
+				<td>文字数</td>
+				<td>2939文字</td>
+			</tr>
+			<tr>
+				<td>章数</td>
+				<td>6</td>
+			</tr>
+			<tr>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>交渉項目1</td>
+				<td>Sennhizer IE 100 PRO Wirelessの購入</td>
+			</tr>
+			<tr>
+				<td>交渉項目2</td>
+				<td>Sennhizer BT T100の購入</td>
+			</tr>
+			<tr>
+				<td>交渉項目3</td>
+				<td>Moukey Audio Mixerの購入</td>
+			</tr>
+			<tr>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>結果</td>
+				<td>成功（質問0）</td>
+			</tr>
+			<tr>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>工夫点1</td>
+				<td>分かりやすく章を分ける</td>
+			</tr>
+			<tr>
+				<td>工夫点2</td>
+				<td>受験に対する影響を記述</td>
+			</tr>
+			<tr>
+				<td>工夫点3</td>
+				<td>【】で章数を、&lt;&gt;で商品名を分けた</td>
+			</tr>
+		</tbody>
+	</table>
+	<h2 id="update-info">Update Info</h2>
+	<pre class="hljs"><code><div>created on 2024.01.20 20:15   
+updated on 2023.01.20 21:00
+</div></code></pre>
+	<h2 id="%E6%96%87%E7%AB%A02939%E6%96%87%E5%AD%97">文章(2939文字)</h2>
+	<pre class="hljs"><code><div>【第一章】欲しいもの
+・Sennhizer BT T100　　　　　　    （A）    
+・Sennhizer IE 100 PRO Wireless   （A）    
+・Moukey Audio Mixer　　　　　     （B）  
+  
+(A):クリスマスにもらった3万円で購入
+(B):県大会の3000円で購入
+
+
+【第二章】商品説明
+
+＜Sennhizer IE 100 PRO Wireless＞
+これはモニタリングワイヤレスイヤホンと呼ばれるもので、いわゆる「素の音」を出力してくれる、ワイヤレスイヤホン。そして両耳がつながっている
+
+＜Sennhizer BT T100＞
+これはSennizer系統のイヤホン・ヘッドフォンをAptX-LLというコーデックで遅延を「ほぼなくす」ことができるブルートゥーストランスミッター
+
+＜Moukey Audio Mixer＞
+これはオーディオミキサーと呼ばれるもので、複数の音源の音量バランス・マルチ音量バランスを調整することができ、たとえば、音楽とさ行の音のバランスを調整することができるもの。
+
+
+【第三章】メリット
+
+＜Sennhizer IE 100 PRO Wireless＞
+これを使用して、勉強の音楽などを夜などの近所迷惑になる時間や、家族の他の人たちが寝てるときに使用する。そうすることでしっかりとした音量で、夜なども集中することができる。またモニターイヤホンなので、音楽を加工されていない原音で聞くことができる。また、ワイヤレスなので、ケーブルの鬱陶しさもかいしょうすることができたり、ケーブルで二つのイヤホンが繋がっているので、無くしにくく、見つけやすいというメリットがある。
+
+＜Sennhizer BT T100＞
+これは、上記の商品(Sennhizer IE 100 PRO Wireless)を遅延なく、遠くまで飛ばすことができたり、Bluetoothに対応していないデバイスにも音を飛ばすことができるというもの。このSennhizer IE 100 PRO Wirelessに限らす、すべてのAptX-LLと呼ばれる超高音質・超低遅延なコーデックに対応さえしていれば超高音質かつ超低遅延で繋げることができる。又、こちらにSennhizer IE 100 PRO Wirelessを登録するため、このケーブル接続先をへんこうするだけで、再ペアリングの手間が”消滅する”。又、Bluetoothで接続さきを変更する場合、登録個数に限界があるが、こちらをしようすることで、無限に接続することができる。
+
+＜Moukey Audio Mixer＞
+これは、PCで勉強するときや、何かしらの作業をする際に、PCの音楽と音楽を両方イヤホン・ヘッドフォンで再生したいという要望に応えてくれたり、これだけで、音量を手元で簡単に操作することが可能になる。そうすることで、ちょっと音大きいなという時でも簡単に調節することができる。又、USB-C給電であるためケーブルの上下がなかったりなどのUSB-Cならではの恩恵を多数受けることができる。
+
+
+【第四章】使用目的
+
+＜Sennhizer IE 100 PRO Wireless＞
+これは主にiPadで音楽を聴くときに使用する。作業用イヤホンの他、アニメを見るときなどでも使用する。これは、原音で聞くことができるので、加工されていない、音そのものを楽しむことができるためである。
+＜Sennhizer BT T100＞
+
+これは机から少し離れたとしても接続がいちいち切れず、また、AptX-LLに対応しているので音質の劣化がない。また、後々使用目的を伝える、Moukey Audio Mixerにも対応するためである。それらによってストレスフリーで音楽鑑賞をするなどに使用するためである。
+&lt;Moukey Audio Mixer&gt;
+
+こちらはすららなどを行う際、「演習」と呼ばれる紹介がある、その時に手元で「直感的に」音楽のボリュームを下げたり、PCのボリュームを上げたりすることができる。よって、複数機器で調節するよりもはるかに楽に使用することができる。よって、こちらを使用する。
+
+
+【第五章】勉強への影響
+こちらの三商品が高校受験への影響について考える。こちらの三商品は学習に影響することはない。むしろいい音質で勉強の質を上げることができたり、音量調節が手元でできることで、シームレスにすららの演習に移ることができると考えている。また、高校に入った後・そのあとにも使用することが十分にできるものを選択した。Sennhizer IE 100 PRO Wirelessは音楽鑑賞や、映像鑑賞、作業用にSennhizer BT T100で遅延なしで音ゲーなどのゲーム（受験期は停止するもの含む）。Moukey Audio Mixerは複数音源のバランス調整なども行う。Moukey Audio Mixerのポートにピンマイクを接続することで、外部音取り組みを疑似的に再現することができる。それらに使用するつもりである。また、これらを購入したことにより、成績を下げることはないように精いっぱい努力いたします。また、これらの商品は製作会社が十分に信用ができ、価格も妥当であると判断したものを選択した。これらのものを使用し、受験勉強（今だったら定期テストの勉強）や、ロボカップの基盤作成などの音楽再生に使用するので、勉強への影響は心配する必要はありません。
+【第六章】残金と今後について
+
+
+今回の購入ではおよそ3000円程度が余ると予想される。それらはすべてロボカップに費やします。こうすることで全国大会へいき、がっばって3位をとります。こうすることで岐阜高専へすこしでもちかづけることができるようにしたいないと思います。残金の三千円の使い道は、ロボカップのマイコン、その他部品（ドリブラーなど）に使用する予定です。これらをしっかりと確実に実装し、全国大会で、ビギナーのときの41位を更新することができるようにしたいです。詳しく言うと10位以内を目指します。できれば三位をとり、高専の推薦条件に合致するように頑張ります。このような残金の使用の仕方をあらかじめ親という信頼できる相手に伝えておくことで、別の目的にしようすることがないようにするという目的もあり、ここに記述します。また、ロボカップの部品を購入するときは、親に相談し、必要なものだけを購入します。また、今年のままからもうらう誕生日の5000円はロボカップに使用する予定を計画しております。また、この3万円はままが、現在はいっている残高をすべて使用してから3万円を現金でお渡しいただければとてもうれしいです。
+
+
+こちらのプランでいかがでしょうか。何かご質問がありましたら行ってください。敬語・尊敬語・謙譲語などのミスやタイプミスは受け付けません。商品とここについてはどうなのかということがあれば言ってくれればほとんどお答えします。以上、2939文字をお読みいただきありがとうございました。
+</div></code></pre>
+	<hr>
+	<hr>
+	<hr>
+	<h2 id="footer">Footer</h2>
+	<p><code>Update info</code></p>
+	<table>
+		<thead>
+			<tr>
+				<th>更新日時</th>
+				<th>更新内容</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>2023.01.20 20:15</td>
+				<td>Create this document</td>
+			</tr>
+			<tr>
+				<td>〃</td>
+				<td>#100001 (1.0.0)　作成</td>
+			</tr>
+			<tr>
+				<td>2023.01.20 21:00</td>
+				<td>Systems　　　　URLを&quot;https://docs-sora81dev.netlify.app&quot;から&quot;https://private-docs-sora81dev.netlify.app&quot;に変更
+				</td>
+			</tr>
+			<tr>
+				<td>〃</td>
+				<td>#100001 (1.0.1)　成功としてマーク</td>
+			</tr>
+			<tr>
+				<td>〃</td>
+				<td>Systems　　　　タイトルを&quot;index.html&quot;から&quot;交渉系｜Sora Docs(Private)&quot;に変更</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><code>LICENSE</code></p>
+	<pre class="hljs"><code><div>LICENSE CC-BY-NC-ND 4.0
+</div></code></pre>
+
+</body>
+
+</html>
