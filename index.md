@@ -4,8 +4,8 @@ title: 目次 | Sora Docs(Private)
 # 目次
 |リンク|タイトル|
 |-|-|
-|[link](/docs-sora81dev/collective-negotiation/)|交渉|
-|[link](/docs-sora81dev/plans/)|計画
+|[link](./collective-negotiation/)|交渉|
+|[link](./plans/)|計画
 ---
 ---
 ---
@@ -15,7 +15,7 @@ title: 目次 | Sora Docs(Private)
 |-|-|-|
 System|1.0.0|2024.01.21 15:10
 Futter|1.1.0|〃
-目次|1.1.0|〃
+目次|1.1.1|2024.01.21 15:24
 
 `Update Information`
 |更新日時|更新場所|バージョン|内容|
@@ -25,3 +25,4 @@ Futter|1.1.0|〃
 |〃|Futter|1.0.0|フッターを作成
 |〃|目次|1.1.0|交渉と計画を追加
 |〃|Futter|1.1.0|Last VersionとUpdate Informationを追加|
+|2024.01.21 15:24|目次|1.1.1|URL修正
